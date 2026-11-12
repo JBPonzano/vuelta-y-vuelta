@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu pedido · Vuelta y Vuelta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<header>
+    <div class="contenedor barra">
+      <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo de Vuelta y Vuelta"></a>
+      </div>
+      <!-- Menú hamburguesa, hecho solo con HTML y CSS (sin JavaScript).
+           El <input> queda invisible y el <label> es el botón de las tres
+           rayitas: al tocarlo se tilda el checkbox, y el CSS usa ese estado
+           para mostrar el menú. En computadora los dos están ocultos. -->
+      <input type="checkbox" id="abrir-menu" class="abrir-menu">
+      <label for="abrir-menu" class="boton-menu" aria-label="Abrir el menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="index.html"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"/></svg>Inicio</a></li>
+          <li><a href="la-caja.html"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M180-80q-24.75 0-42.37-17.63Q120-115.25 120-140v-483q-17-6-28.5-21.39T80-680v-140q0-24.75 17.63-42.38Q115.25-880 140-880h680q24.75 0 42.38 17.62Q880-844.75 880-820v140q0 20.22-11.5 35.61T840-623v483q0 24.75-17.62 42.37Q804.75-80 780-80H180Zm0-540v480h600v-480H180Zm-40-60h680v-140H140v140Zm220 260h240v-60H360v60Zm120 40Z"/></svg>La caja</a></li>
+          <li><a href="eventos.html"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M180-80q-24 0-42-18t-18-42v-620q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600v-430H180v430Zm0-490h600v-130H180v130Zm0 0v-130 130Zm300 230q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>Eventos</a></li>
+          <li><a href="tienda.html" class="activo"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M840-519v339q0 24-18 42t-42 18H179q-24 0-42-18t-18-42v-339q-28-24-37-59t2-70l43-135q8-27 28-42t46-15h553q28 0 49 15.5t29 41.5l44 135q11 35 1.5 70T840-519Zm-270-31q29 0 49-19t16-46l-25-165H510v165q0 26 17 45.5t43 19.5Zm-187 0q28 0 47.5-19t19.5-46v-165H350l-25 165q-4 26 14 45.5t44 19.5Zm-182 0q24 0 41.5-16.5T263-607l26-173H189l-46 146q-10 31 8 57.5t50 26.5Zm557 0q32 0 50.5-26t8.5-58l-46-146H671l26 173q3 24 20.5 40.5T758-550ZM179-180h601v-311q1 1-6.5 1H758q-25 0-47.5-10.5T666-533q-16 20-40 31.5T573-490q-30 0-51.5-8.5T480-527q-15 18-38 27.5t-52 9.5q-31 0-55-11t-41-32q-24 21-47 32t-46 11h-13.5q-6.5 0-8.5-1v311Zm601 0H179h601Z"/></svg>Tienda</a></li>
+          <li><a href="contacto.html"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M140-160q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm340-302L140-685v465h680v-465L480-462Zm0-60 336-218H145l335 218ZM140-685v-55 520-465Z"/></svg>Contacto</a></li>
+          <li><a href="carrito.html" class="pedir"><svg viewBox="0 -960 960 960" aria-hidden="true"><path d="M236-102.21q-21-21.21-21-51T236.21-204q21.21-21 51-21T338-203.79q21 21.21 21 51T337.79-102q-21.21 21-51 21T236-102.21Zm400 0q-21-21.21-21-51T636.21-204q21.21-21 51-21T738-203.79q21 21.21 21 51T737.79-102q-21.21 21-51 21T636-102.21ZM235-741l110 228h288l125-228H235Zm-30-60h589.07q22.97 0 34.95 21 11.98 21-.02 42L694-495q-11 19-28.56 30.5T627-453H324l-56 104h491v60H277q-42 0-60.5-28t.5-63l64-118-152-322H51v-60h117l37 79Zm140 288h288-288Z"/></svg>Mi carrito</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== EL CARRITO ===================== -->
+  <section class="seccion">
+    <div class="contenedor">
+      <h1 class="titulo">Tu pedido</h1>
+      <ol class="pasos-compra">
+        <li class="actual"><span>1</span>Tu pedido</li>
+        <li><span>2</span>Tus datos</li>
+        <li><span>3</span>Listo</li>
+      </ol>
+
+      <!-- FLEXBOX: el detalle del pedido a la izquierda y el resumen a la derecha -->
+      <div class="compra">
+        <div class="compra-principal">
+          <table class="tabla-carrito">
+            <caption>Detalle de tu pedido</caption>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="celda-producto">
+                  <div class="celda-caja">
+                    <img src="img/caja-ilustracion.png" alt="La caja de doce">
+                    <span><strong>La caja de doce</strong><br>12 medallones · 12 panes · 24 fetas</span>
+                  </div>
+                </td>
+                <td data-nombre="Precio">$48.000</td>
+                <td data-nombre="Cantidad">2</td>
+                <td data-nombre="Subtotal">$96.000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="tienda.html" class="volver">Seguir comprando</a>
+        </div>
+
+        <aside class="resumen">
+          <h3>Resumen</h3>
+          <p class="linea"><span>Subtotal</span><span>$96.000</span></p>
+          <p class="linea"><span>Envío a tu zona</span><span>Sin cargo</span></p>
+          <p class="linea total"><span>Total</span><span>$96.000</span></p>
+          <a href="checkout.html" class="boton">Continuar</a>
+          <p class="resumen-aviso">Pagás cuando recibís el pedido.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ===================== FOOTER ===================== -->
+  <!-- Igual en las cuatro páginas -->
+  <footer>
+    <div class="contenedor">
+      <div class="footer-caja">
+        <div class="footer-bloque">
+          <h4>Vuelta y Vuelta</h4>
+          <p>Nosotros te preparamos todo.<br>Vos solo le das vuelta y vuelta.</p>
+        </div>
+        <div class="footer-bloque">
+          <h4>Secciones</h4>
+          <a href="index.html">Inicio</a>
+          <a href="la-caja.html">La caja</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="tienda.html">Tienda</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-bloque">
+          <h4>Escribinos</h4>
+          <a href="https://wa.me/5491163047192" target="_blank">WhatsApp 11 6304-7192</a>
+          <a href="https://www.instagram.com/vv.brg/" target="_blank">Instagram @vv.brg</a>
+        </div>
+        <div class="footer-bloque">
+          <h4>Zonas de entrega</h4>
+          <p>Bella Vista · Bancalari · Nordelta · Cuba · Villa de Mayo</p>
+        </div>
+      </div>
+      <p class="footer-fin">Vuelta y Vuelta · 2026 · Sitio realizado por Juan Bautista Ponzano para Contenidos y Creatividad I, Universidad de Palermo.</p>
+    </div>
+  </footer>
+
+
+  <!-- ===================== BOTÓN FLOTANTE DE WHATSAPP ===================== -->
+  <a href="https://wa.me/5491163047192" class="wsp" target="_blank" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35Z"/><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.36c0-4.54 3.69-8.23 8.23-8.23 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.22-8.24 8.22Z"/></svg>
+    <span>Escribinos</span>
+  </a>
+
+</body>
+</html>

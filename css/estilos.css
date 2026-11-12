@@ -1,0 +1,1651 @@
+/* ==========================================================================
+   VUELTA Y VUELTA — hoja de estilos única para las cuatro páginas
+   Juan Bautista Ponzano · Contenidos y Creatividad I · Universidad de Palermo
+
+   Paleta:  rojo #AE0D15 · crema #F7ECD6 · crema claro #FBF5E9 · marrón #785A46
+   Tipografía: Montserrat (se carga desde Google Fonts en cada HTML)
+   Maquetado: FLEXBOX en todos los bloques. No se usa CSS Grid.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. RESET
+   Saca los márgenes que el navegador pone por defecto y hace que el padding
+   no agrande las cajas (box-sizing). Es lo primero que conviene escribir.
+   -------------------------------------------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. ESTILOS GENERALES
+   -------------------------------------------------------------------------- */
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background-color: #FBF5E9;
+  color: #3A2B22;
+  line-height: 1.6;
+}
+
+/* .contenedor centra el contenido y le pone un ancho máximo.
+   Se repite en casi todos los bloques para que todo quede alineado. */
+.contenedor {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+img {
+  max-width: 100%;   /* que ninguna imagen se desborde de su caja */
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #AE0D15;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. BOTONES
+   Hay dos: el rojo lleno (acción principal) y el de contorno (secundaria).
+   -------------------------------------------------------------------------- */
+
+.boton {
+  display: inline-block;
+  background-color: #AE0D15;
+  color: #FBF5E9;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: 2px solid #AE0D15;
+}
+
+.boton:hover {
+  background-color: #8C0A11;
+  border-color: #8C0A11;
+}
+
+.boton-linea {
+  display: inline-block;
+  background-color: transparent;
+  color: #AE0D15;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: 2px solid #AE0D15;
+}
+
+.boton-linea:hover {
+  background-color: #AE0D15;
+  color: #FBF5E9;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. HEADER
+   FLEXBOX nº 1: logo a la izquierda, menú a la derecha.
+   justify-content: space-between los empuja a los extremos.
+   align-items: center los alinea verticalmente.
+   -------------------------------------------------------------------------- */
+
+header {
+  background-color: #AE0D15;
+  padding: 14px 0;
+  position: sticky;   /* el menú queda fijo arriba al hacer scroll */
+  top: 0;
+  z-index: 10;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 64px;      /* subido de 46px: la marca tiene que pesar más en la barra */
+  width: auto;
+}
+
+/* El menú también es flex: pone los <li> en fila en vez de en columna. */
+.menu ul {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  list-style: none;   /* saca los puntitos de la lista */
+}
+
+.menu a {
+  color: #FBF5E9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  color: #F7ECD6;
+  text-decoration: underline;
+}
+
+/* El ítem activo marca en qué página estoy parado. */
+.menu .activo {
+  border-bottom: 2px solid #FBF5E9;
+  padding-bottom: 3px;
+}
+
+.menu .pedir {
+  background-color: #FBF5E9;
+  color: #AE0D15;
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.menu .pedir:hover {
+  background-color: #F7ECD6;
+  text-decoration: none;
+}
+
+/* El botón hamburguesa y su checkbox.
+   En computadora no se ven: el menú ya entra entero en la barra.
+   Solo aparecen en celular (ver 15.2). */
+.abrir-menu {
+  display: none;
+}
+
+.boton-menu {
+  display: none;            /* se enciende en el media query de celular */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 38px;
+  padding: 0 7px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Las tres rayitas: tres <span> vacíos, uno arriba del otro. */
+.boton-menu span {
+  display: block;
+  height: 3px;
+  background-color: #FBF5E9;
+  border-radius: 2px;
+}
+
+/* Cuando el menú está abierto, el botón queda marcado para que se note. */
+.abrir-menu:checked ~ .boton-menu {
+  background-color: rgba(251, 245, 233, 0.2);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HERO
+   FLEXBOX nº 2: texto a la izquierda, imagen a la derecha, en dos columnas.
+   flex: 1 en cada hijo hace que se repartan el ancho por igual.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  background-color: #F7ECD6;
+  padding: 70px 0;
+}
+
+.hero-caja {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero-texto {
+  flex: 1;
+}
+
+.hero-foto {
+  flex: 1;
+}
+
+.hero-foto img {
+  border-radius: 12px;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;   /* recorta la foto sin deformarla */
+}
+
+.hero h1 {
+  font-size: 46px;
+  font-weight: 800;
+  color: #AE0D15;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 28px;
+  color: #5C4536;
+}
+
+/* Los dos botones del hero, uno al lado del otro. */
+.hero-botones {
+  display: flex;
+  gap: 14px;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. TÍTULOS DE SECCIÓN
+   -------------------------------------------------------------------------- */
+
+.seccion {
+  padding: 64px 0;
+}
+
+.seccion-crema {
+  background-color: #F7ECD6;
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: 800;
+  color: #AE0D15;
+  margin-bottom: 10px;
+}
+
+.bajada {
+  font-size: 16px;
+  color: #6B5445;
+  margin-bottom: 36px;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. TARJETAS
+   FLEXBOX nº 3: tres tarjetas en fila.
+   flex-wrap: wrap permite que bajen solas si no entran.
+   -------------------------------------------------------------------------- */
+
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.tarjeta {
+  flex: 1;
+  min-width: 260px;   /* si baja de 260px, se va a la fila de abajo */
+  background-color: #FFFFFF;
+  border: 1px solid #E4D7C3;
+  border-radius: 12px;
+  padding: 28px 24px;
+}
+
+.tarjeta h3 {
+  font-size: 19px;
+  color: #AE0D15;
+  margin-bottom: 10px;
+}
+
+.tarjeta p {
+  font-size: 15px;
+  color: #5C4536;
+}
+
+/* El numerito de arriba de cada tarjeta. */
+.numero {
+  display: inline-block;
+  background-color: #AE0D15;
+  color: #FBF5E9;
+  font-size: 14px;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  margin-bottom: 14px;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. BLOQUE DE PRECIO
+   -------------------------------------------------------------------------- */
+
+.precio-caja {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: #AE0D15;
+  border-radius: 14px;
+  padding: 40px;
+  color: #FBF5E9;
+}
+
+.precio-texto {
+  flex: 1;
+}
+
+.precio-numero {
+  flex: 1;
+  text-align: center;
+}
+
+.precio-numero .plata {
+  font-size: 52px;
+  font-weight: 800;
+  display: block;
+}
+
+.precio-numero .unidad {
+  font-size: 15px;
+  color: #F0C9C0;
+}
+
+.precio-caja h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.precio-caja p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.precio-caja .boton {
+  background-color: #FBF5E9;
+  color: #AE0D15;
+  border-color: #FBF5E9;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. PASOS DE COCCIÓN
+   FLEXBOX nº 4: cuatro pasos en fila.
+   -------------------------------------------------------------------------- */
+
+.pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.paso {
+  flex: 1;
+  min-width: 210px;
+}
+
+.paso img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.paso h3 {
+  font-size: 17px;
+  color: #AE0D15;
+  margin-bottom: 6px;
+}
+
+.paso p {
+  font-size: 14px;
+  color: #5C4536;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. BLOQUE DE DOS COLUMNAS (se reutiliza en varias páginas)
+   -------------------------------------------------------------------------- */
+
+.dos-columnas {
+  display: flex;
+  align-items: center;
+  gap: 46px;
+}
+
+.columna {
+  flex: 1;
+}
+
+.columna img {
+  border-radius: 12px;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
+/* Variante: alinea las dos columnas arriba en vez de al centro.
+   Se usa en Contacto, donde el formulario es más largo que la otra columna. */
+.dos-columnas.arriba {
+  align-items: flex-start;
+}
+
+/* Lista con ✓ delante, para "qué trae la caja". */
+.lista-check {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.lista-check li {
+  font-size: 16px;
+  padding: 9px 0 9px 30px;
+  border-bottom: 1px solid #E4D7C3;
+  position: relative;
+}
+
+.lista-check li::before {
+  content: "✓";
+  color: #AE0D15;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. TABLA DE ZONAS Y DÍAS
+   Es la <table> que pide la consigna. Va en Contacto.
+   border-collapse junta los bordes para que no queden dobles.
+   -------------------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+caption {
+  font-size: 14px;
+  color: #6B5445;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+th {
+  background-color: #AE0D15;
+  color: #FBF5E9;
+  font-size: 14px;
+  text-align: left;
+  padding: 14px 18px;
+}
+
+td {
+  font-size: 15px;
+  padding: 13px 18px;
+  border-bottom: 1px solid #EADCC8;
+  color: #5C4536;
+}
+
+/* Pinta una fila sí y una no, para que se lea más fácil. */
+tbody tr:nth-child(even) {
+  background-color: #FDF8EF;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. FORMULARIO
+   Es el <form> que pide la consigna. También va en Contacto.
+   -------------------------------------------------------------------------- */
+
+form {
+  background-color: #FFFFFF;
+  border: 1px solid #E4D7C3;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+/* Cada campo con su etiqueta, uno arriba del otro. */
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5C4536;
+  margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1px solid #CBB79C;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  color: #3A2B22;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #AE0D15;   /* marca el campo en el que estoy escribiendo */
+}
+
+textarea {
+  resize: vertical;   /* se puede agrandar para abajo, no para los costados */
+}
+
+/* Dos campos cortos en la misma fila (nombre y teléfono). */
+.fila-campos {
+  display: flex;
+  gap: 18px;
+}
+
+.fila-campos .campo {
+  flex: 1;
+}
+
+form button {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #AE0D15;
+  color: #FBF5E9;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 30px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #8C0A11;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. DATOS DE CONTACTO Y SOCIOS
+   -------------------------------------------------------------------------- */
+
+.datos {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.datos li {
+  font-size: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #E4D7C3;
+}
+
+.datos strong {
+  color: #AE0D15;
+}
+
+.socios {
+  display: flex;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.socio {
+  flex: 1;
+  text-align: center;
+}
+
+/* Las fotos de los socios. Se recortan en círculo con border-radius: 50%
+   y object-fit: cover, que las encuadra sin estirarlas. El borde crema las
+   despega del fondo. */
+.socio img {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #F7ECD6;
+  margin: 0 auto 10px auto;
+}
+
+.socio p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5C4536;
+}
+
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+
+footer {
+  background-color: #3A2B22;
+  color: #D9CBBD;
+  padding: 44px 0 26px 0;
+  margin-top: 10px;
+}
+
+.footer-caja {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 28px;
+}
+
+.footer-bloque {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-bloque h4 {
+  font-size: 15px;
+  color: #F7ECD6;
+  margin-bottom: 12px;
+}
+
+.footer-bloque p,
+.footer-bloque a {
+  font-size: 14px;
+  color: #D9CBBD;
+  display: block;
+  margin-bottom: 7px;
+}
+
+.footer-bloque a:hover {
+  color: #F7ECD6;
+}
+
+.footer-fin {
+  border-top: 1px solid #574437;
+  padding-top: 18px;
+  font-size: 13px;
+  text-align: center;
+  color: #A6968A;
+}
+
+
+/* ==========================================================================
+   15. ADAPTACIÓN A OTRAS PANTALLAS (RESPONSIVE)
+   Son los tres tamaños que están dibujados en el mockup:
+   computadora (1440px), tablet (834px) y celular (390px).
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   15.1 TABLET
+   Entre 769px y 1024px. Es la adaptación del medio que está en el mockup
+   (834px de ancho). Acá todavía entran dos columnas, así que las filas de
+   tres y de cuatro bloques pasan a dos y no a una.
+   Va ANTES del media query de celular a propósito: los dos se cumplen a la
+   vez en pantallas chicas, y como en CSS gana la última regla escrita,
+   el celular tiene que estar después para poder pisar a la tablet.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+  /* El menú se achica para que entren los cinco ítems en una fila. */
+  .menu ul {
+    gap: 16px;
+  }
+
+  .menu a {
+    font-size: 13px;
+  }
+
+  /* Las tarjetas y los pasos pasan de tres y cuatro por fila a dos.
+     flex-basis: 46% hace que entren dos y media baje la tercera. */
+  .tarjeta,
+  .paso {
+    flex: 1 1 46%;
+  }
+
+  /* Los bloques de dos columnas siguen siendo dos, pero más juntos
+     y con la foto más baja para que no empuje todo hacia abajo. */
+  .dos-columnas {
+    gap: 28px;
+  }
+
+  .columna img {
+    height: 260px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   15.2 CELULAR
+   Debajo de 768px todo pasa a una columna y el menú se vuelve hamburguesa.
+   No se saca contenido, solo se reordena.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  /* La barra se parte en dos filas: arriba el logo y el botón de las
+     rayitas, y abajo el menú ocupando el ancho completo. */
+  .barra {
+    flex-wrap: wrap;
+  }
+
+  /* Aparece el botón de las tres rayitas. */
+  .boton-menu {
+    display: flex;
+  }
+
+  /* El menú arranca escondido y ocupa toda la fila de abajo. */
+  .menu {
+    display: none;
+    flex-basis: 100%;
+  }
+
+  /* Acá pasa la magia: cuando el checkbox está tildado, el menú que viene
+     después de él (~) se muestra. Es el único truco del sitio y no usa
+     JavaScript: lo resuelve todo el CSS. */
+  .abrir-menu:checked ~ .menu {
+    display: block;
+  }
+
+  /* Adentro del menú abierto, los ítems se apilan uno arriba del otro
+     y ocupan todo el ancho, para que sean fáciles de tocar con el dedo. */
+  .menu ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 10px;
+  }
+
+  .menu a {
+    padding: 13px 2px;
+    font-size: 15px;
+    border-top: 1px solid rgba(251, 245, 233, 0.25);
+  }
+
+  .menu .activo {
+    border-bottom: none;
+    padding-bottom: 13px;
+  }
+
+  /* El botón de WhatsApp queda centrado y separado del resto. */
+  .menu .pedir {
+    justify-content: center;
+    margin: 12px 0 4px;
+    border-top: none;
+  }
+
+  /* Todos los bloques de dos columnas pasan a una. */
+  .hero-caja,
+  .dos-columnas,
+  .precio-caja,
+  .fila-campos {
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .titulo {
+    font-size: 25px;
+  }
+
+  .hero-foto img,
+  .columna img {
+    height: 240px;
+  }
+
+  /* Las tarjetas y los pasos también se apilan. */
+  .tarjetas,
+  .pasos,
+  .socios {
+    flex-direction: column;
+  }
+
+  /* Se deshace el 46% que se les puso para la tablet: acá van al ancho
+     completo, una abajo de la otra. */
+  .tarjeta,
+  .paso {
+    flex: 1 1 auto;
+  }
+
+  .seccion {
+    padding: 44px 0;
+  }
+
+  /* La tabla se achica un poco para que entre. */
+  th, td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+
+/* ==========================================================================
+   16. CORRECCIONES PEDIDAS POR LA PROFESORA
+   Se agregan al final para que se vea claro qué se sumó después.
+   Son cuatro cosas: íconos en el menú, carrusel automático,
+   botón flotante de WhatsApp y el personaje caminando.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   16.1 ÍCONOS EN EL MENÚ
+   Cada <a> del menú pasa a ser flex para poder poner el ícono al lado
+   del texto y que queden alineados.
+   -------------------------------------------------------------------------- */
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* El ícono es un SVG escrito dentro del HTML.
+   width y height lo achican; stroke: currentColor hace que tome
+   el mismo color que el texto del link. */
+/* Iconos del menu: Material Symbols (Outlined), de Google Fonts.
+   https://fonts.google.com/icons  -  licencia Apache 2.0.
+   Son figuras rellenas, por eso van con fill y no con stroke. */
+.menu svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  stroke: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   16.2 CARRUSEL AUTOMÁTICO DE FOTOS
+   Hecho solo con CSS, sin JavaScript.
+
+   Cómo funciona:
+   - .carrusel tiene overflow: hidden, así que solo deja ver una parte.
+   - .tira es un flex con las fotos puestas DOS VECES, una detrás de la otra.
+   - La animación corre la tira un 50% hacia la izquierda. Cuando llega
+     al 50% está mostrando la segunda copia, que es igual a la primera,
+     y al volver a cero no se nota el salto. Por eso parece infinito.
+   -------------------------------------------------------------------------- */
+
+.carrusel {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.tira {
+  display: flex;
+  gap: 18px;
+  width: max-content;              /* que mida lo que midan las fotos juntas */
+  animation: correr 34s linear infinite;
+}
+
+.tira img {
+  width: 420px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;                  /* que no se achiquen para entrar */
+}
+
+/* Al pasar el mouse se frena, para poder mirar una foto. */
+.carrusel:hover .tira {
+  animation-play-state: paused;
+}
+
+@keyframes correr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Aviso chiquito debajo del carrusel. */
+.aviso-carrusel {
+  font-size: 13px;
+  color: #8A7465;
+  margin-top: 12px;
+  text-align: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   16.3 BOTÓN FLOTANTE DE WHATSAPP
+   position: fixed lo deja pegado a la pantalla: no se mueve con el scroll.
+   -------------------------------------------------------------------------- */
+
+.wsp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25D366;       /* el verde propio de WhatsApp */
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 40px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.wsp:hover {
+  background-color: #1EBE5A;
+}
+
+.wsp svg {
+  width: 24px;
+  height: 24px;
+  fill: #FFFFFF;
+}
+
+/* En celular queda solo el logo, sin el texto, para no tapar el contenido. */
+@media (max-width: 768px) {
+  .wsp {
+    right: 16px;
+    bottom: 16px;
+    padding: 14px;
+  }
+  .wsp span {
+    display: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   16.4 EL PERSONAJE CAMINANDO
+   Una franja angosta entre dos secciones. El dibujo cruza de izquierda
+   a derecha y vuelve a empezar.
+
+   translateX(-200px)  → arranca afuera, a la izquierda
+   translateX(100vw)   → termina afuera, a la derecha (vw = ancho de pantalla)
+   -------------------------------------------------------------------------- */
+
+.franja-personaje {
+  background-color: #AE0D15;
+  height: 120px;
+  overflow: hidden;                /* para que no aparezca scroll horizontal */
+  position: relative;
+}
+
+.franja-personaje img {
+  height: 104px;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  animation: caminar 16s linear infinite;
+}
+
+@keyframes caminar {
+  from { transform: translateX(-200px); }
+  to   { transform: translateX(100vw); }
+}
+
+/* Una línea de piso, para que no parezca que flota. */
+.franja-personaje::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #8C0A11;
+}
+
+
+/* --------------------------------------------------------------------------
+   16.5 AJUSTES DE CELULAR PARA LO NUEVO
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .tira img {
+    width: 260px;
+    height: 190px;
+  }
+
+  .franja-personaje {
+    height: 92px;
+  }
+
+  .franja-personaje img {
+    height: 80px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   16.6 RESPETAR A QUIEN PIDE MENOS MOVIMIENTO
+   Si la persona configuró el sistema para reducir animaciones, se frena todo.
+   Es una buena práctica de accesibilidad y suma para defender el trabajo.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .tira,
+  .franja-personaje img {
+    animation: none;
+  }
+}
+
+
+/* ==========================================================================
+   17. EL VIDEO DEL HERO
+   El Inicio arranca con un video de la plancha en bucle, con el texto encima.
+   ========================================================================== */
+
+/* El contenedor necesita position: relative para que el video,
+   que va posicionado absolute, se ubique respecto de él. */
+.hero-video {
+  position: relative;
+  background-color: #3A2B22;   /* color de respaldo por si el video no carga */
+  padding: 110px 0;
+  overflow: hidden;
+}
+
+/* El video ocupa todo el bloque y queda por detrás del texto.
+   object-fit: cover lo recorta sin deformarlo, igual que con las fotos. */
+.hero-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Una capa oscura entre el video y el texto, para que el texto se lea.
+   Sin esto el título blanco se pierde contra la carne y el humo. */
+.hero-video .capa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(42, 33, 28, 0.58);
+}
+
+/* El texto va encima de todo: por eso position relative y un ancho máximo. */
+.hero-sobre-video {
+  position: relative;
+  max-width: 760px;
+}
+
+.hero-video h1 {
+  color: #FBF5E9;
+}
+
+.hero-video p {
+  color: #EDE0CE;
+}
+
+.hero-video .boton-linea {
+  color: #FBF5E9;
+  border-color: #FBF5E9;
+}
+
+.hero-video .boton-linea:hover {
+  background-color: #FBF5E9;
+  color: #AE0D15;
+}
+
+
+/* --------------------------------------------------------------------------
+   17.1 FOTO DENTRO DEL BLOQUE DE PRECIO
+   -------------------------------------------------------------------------- */
+
+.precio-foto {
+  flex: 1;
+}
+
+.precio-foto img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  /* object-position corre el recorte hacia abajo, donde está la hamburguesa.
+     Sin esto la foto se recorta por el centro y se ve la gente de fondo. */
+  object-position: center 78%;
+}
+
+
+/* --------------------------------------------------------------------------
+   17.2 LISTA DE PASOS SIN FOTO
+   Se usa en La caja, donde los pasos ya están ilustrados en el Inicio.
+   -------------------------------------------------------------------------- */
+
+.pasos-lista {
+  list-style: none;
+}
+
+.pasos-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 16px;
+  color: #5C4536;
+  padding: 16px 0;
+  border-bottom: 1px solid #E4D7C3;
+}
+
+.pasos-lista .numero {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   17.3 CELULAR
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .hero-video {
+    padding: 64px 0;
+  }
+
+  .precio-foto img {
+    height: 200px;
+  }
+}
+
+
+/* ==========================================================================
+   18. TIENDA (EL E-COMMERCE)
+   Las cuatro páginas nuevas: Tienda, Tu pedido, Tus datos y Gracias.
+   Reutilizan .seccion, .contenedor, .titulo, .bajada, .boton, la tabla y el
+   formulario que ya estaban. Acá van solo las piezas nuevas.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   18.1 LA FICHA DEL PRODUCTO
+   FLEXBOX: la foto a la izquierda y los datos a la derecha.
+   -------------------------------------------------------------------------- */
+
+.producto {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.producto-foto {
+  flex: 1;
+  background-color: #F7ECD6;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.producto-foto img {
+  width: 100%;
+  display: block;
+}
+
+.producto-datos {
+  flex: 1;
+}
+
+.etiqueta {
+  display: inline-block;
+  background-color: #AE0D15;
+  color: #FBF5E9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.producto-datos h2 {
+  font-size: 30px;
+  color: #3A2B22;
+  margin-bottom: 10px;
+}
+
+.producto-precio {
+  font-size: 34px;
+  font-weight: 800;
+  color: #AE0D15;
+  margin-bottom: 20px;
+}
+
+.producto-precio small {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B5445;
+  margin-top: 4px;
+}
+
+.producto-lista {
+  list-style: none;
+  margin-bottom: 26px;
+}
+
+.producto-lista li {
+  font-size: 15px;
+  color: #5C4536;
+  padding: 9px 0 9px 26px;
+  border-bottom: 1px solid #EADCC8;
+  position: relative;
+}
+
+/* El tilde de cada ítem, dibujado con bordes en vez de una imagen. */
+.producto-lista li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 14px;
+  width: 11px;
+  height: 6px;
+  border-left: 2px solid #AE0D15;
+  border-bottom: 2px solid #AE0D15;
+  transform: rotate(-45deg);
+}
+
+/* El selector de cantidad y el botón, uno al lado del otro. */
+.producto-compra {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.campo-cantidad {
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-aviso {
+  font-size: 13px;
+  color: #6B5445;
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.2 LOS TRES PASOS DE LA COMPRA
+   La barrita de arriba que muestra en qué parte de la compra estás.
+   -------------------------------------------------------------------------- */
+
+.pasos-compra {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.pasos-compra li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #A9937F;
+  background-color: #FFFFFF;
+  border: 1px solid #E4D7C3;
+  border-radius: 30px;
+  padding: 9px 18px 9px 10px;
+}
+
+.pasos-compra li span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #EADCC8;
+  color: #8C7560;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* El paso en el que estoy ahora. */
+.pasos-compra li.actual {
+  color: #FBF5E9;
+  background-color: #AE0D15;
+  border-color: #AE0D15;
+}
+
+.pasos-compra li.actual span {
+  background-color: #FBF5E9;
+  color: #AE0D15;
+}
+
+/* Los pasos que ya pasé. */
+.pasos-compra li.hecho {
+  color: #AE0D15;
+  border-color: #AE0D15;
+}
+
+.pasos-compra li.hecho span {
+  background-color: #AE0D15;
+  color: #FBF5E9;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.3 EL ARMADO DE LA COMPRA
+   FLEXBOX: el detalle a la izquierda y el resumen fijo a la derecha.
+   -------------------------------------------------------------------------- */
+
+.compra {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.compra-principal {
+  flex: 2;
+  min-width: 0;   /* para que la tabla no desborde la columna */
+}
+
+.resumen {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 1px solid #E4D7C3;
+  border-radius: 12px;
+  padding: 26px;
+}
+
+.resumen h3 {
+  font-size: 18px;
+  color: #AE0D15;
+  margin-bottom: 18px;
+}
+
+.linea {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 14px;
+  color: #5C4536;
+  padding: 10px 0;
+  border-bottom: 1px solid #EADCC8;
+}
+
+.linea.total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #3A2B22;
+  border-bottom: none;
+  padding-top: 16px;
+}
+
+.resumen .boton {
+  width: 100%;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.resumen-aviso {
+  font-size: 12px;
+  color: #6B5445;
+  text-align: center;
+  margin-top: 12px;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.4 LA TABLA DEL CARRITO
+   -------------------------------------------------------------------------- */
+
+.tabla-carrito td {
+  vertical-align: middle;
+}
+
+/* El nombre y la foto del producto, uno al lado del otro.
+   El flex va en un div adentro de la celda: si se lo pongo a la <td>
+   deja de comportarse como celda y la fila se desarma. */
+.celda-caja {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.celda-producto img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background-color: #F7ECD6;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.celda-producto span {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* El link para volver un paso atrás. */
+.volver {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #AE0D15;
+  margin-top: 20px;
+}
+
+.volver:hover {
+  text-decoration: underline;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.5 LAS FORMAS DE PAGO
+   Son <input type="radio"> con el mismo name, así solo se puede elegir uno.
+   -------------------------------------------------------------------------- */
+
+.sub-form {
+  font-size: 16px;
+  color: #AE0D15;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #EADCC8;
+}
+
+.formulario .sub-form,
+form .sub-form {
+  margin-top: 6px;
+}
+
+.pagos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.pago {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid #CBB79C;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.pago input {
+  margin-top: 3px;
+  accent-color: #AE0D15;
+}
+
+.pago span {
+  font-size: 14px;
+  color: #5C4536;
+  line-height: 1.6;
+}
+
+/* Cuando el radio está elegido, se pinta toda la tarjeta.
+   :has() mira si adentro hay un input tildado. */
+.pago:has(input:checked) {
+  border-color: #AE0D15;
+  background-color: #FDF8EF;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.6 LA PÁGINA DE GRACIAS
+   -------------------------------------------------------------------------- */
+
+.gracias {
+  background-color: #FFFFFF;
+  border: 1px solid #E4D7C3;
+  border-radius: 14px;
+  padding: 44px;
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.gracias-pedido {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6B5445;
+  margin-bottom: 10px;
+}
+
+.gracias h2 {
+  font-size: 28px;
+  color: #AE0D15;
+  margin-bottom: 12px;
+}
+
+.gracias > p {
+  font-size: 15px;
+  color: #5C4536;
+  line-height: 1.7;
+}
+
+.gracias-detalle {
+  text-align: left;
+  background-color: #FDF8EF;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 28px 0;
+}
+
+.gracias-botones {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* --------------------------------------------------------------------------
+   18.7 LA TIENDA EN TABLET
+   Va antes que la de celular, porque las dos se cumplen en pantalla chica
+   y manda la que está más abajo.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+  .producto {
+    gap: 26px;
+  }
+
+  .producto-datos h2 {
+    font-size: 25px;
+  }
+
+  .producto-precio {
+    font-size: 28px;
+  }
+
+  .compra {
+    gap: 22px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   18.8 LA TIENDA EN CELULAR
+   Todo pasa a una sola columna y la tabla se lee de arriba abajo.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .producto,
+  .compra {
+    flex-direction: column;
+  }
+
+  .producto-foto,
+  .producto-datos,
+  .compra-principal,
+  .resumen {
+    width: 100%;
+  }
+
+  .producto-compra .boton,
+  .campo-cantidad {
+    width: 100%;
+  }
+
+  .producto-compra .boton {
+    text-align: center;
+  }
+
+  .gracias {
+    padding: 28px 22px;
+  }
+
+  .gracias-botones .boton,
+  .gracias-botones .boton-linea {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* La tabla del carrito no entra a lo ancho en el celular, así que cada
+     celda pasa a ocupar su propio renglón con el nombre del dato adelante.
+     El encabezado se esconde porque ya está en cada celda. */
+  .tabla-carrito thead {
+    display: none;
+  }
+
+  .tabla-carrito,
+  .tabla-carrito caption,
+  .tabla-carrito tbody,
+  .tabla-carrito tr,
+  .tabla-carrito td {
+    display: block;
+    width: 100%;
+  }
+
+  .tabla-carrito tr {
+    padding: 8px 0;
+  }
+
+  .tabla-carrito td {
+    text-align: right;
+    padding: 11px 16px;
+  }
+
+  .tabla-carrito td::before {
+    content: attr(data-nombre);
+    float: left;
+    font-weight: 700;
+    color: #8C7560;
+  }
+
+  .tabla-carrito .celda-producto {
+    text-align: left;
+  }
+
+  .tabla-carrito .celda-producto::before {
+    content: none;
+  }
+}
